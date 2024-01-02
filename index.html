@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        #table-bids,#msgs
+        {
+            width: 100%;
+            height: 350px;
+
+        }
+        .blink{
+            background-color: rgb(24, 230, 24);
+        }
+    </style>
+    <!-- SERVICO DE SOCKET.IO INICIALIZADO EM LOCALHOST:3001  -->
+    <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="http://localhost:3001/client"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size: 26px;margin-top: 30px;">Widget de Envio de Lances em Tempo Real (WebSocket)</h1>
+        <hr />
+        <h2>ULTIMO LANCE - <span class="blink">R$ <span id="firstBid" >750,00</span></span></h2>
+        <div id="msgs" style="overflow-y:scroll">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Participante</th>
+                    <th>Data</th>
+                    <th>Último lance R$</th>
+                  </tr>
+                </thead>
+                <tbody id="lances">
+                                   
+                </tbody>
+              </table>
+        </div>
+        <hr />
+        <div id="error-bid"></div>
+        <div class="form-group">
+            <input type="number" class="form-control" name="sendMsg" value="" placeholder="Digite sua mensagem">
+            <input type="hidden" name="lanceMinimo" value="750.00">
+        </div>
+        <div class="form-group">
+            <button onclick="sendBidByClick()" type="button" class="btn btn-success">Enviar Lance</button>
+        </div>
+        
+    </div>
+</body>
+</html>
