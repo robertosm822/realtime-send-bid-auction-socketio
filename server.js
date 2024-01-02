@@ -19,5 +19,5 @@ io.on('connection', (socket) => {
 });
 
 http.listen(3001, function(){
-    console.log('Ouvindo a porta 3001');
+    console.log('Listen port 3001');
 });
